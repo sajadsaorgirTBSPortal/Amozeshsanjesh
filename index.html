@@ -233,26 +233,16 @@
             margin-bottom: 8px;
         }
 
-        .verification-badge {
-            display: inline-block;
-            background: var(--success);
-            color: white;
-            padding: 6px 15px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 600;
-        }
-
         .diploma-info {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 15px;
+            gap: 12px;
             margin: 20px 0;
         }
 
         .info-item {
             background: #f8fafc;
-            padding: 12px;
+            padding: 10px 12px;
             border-radius: 6px;
             border-right: 3px solid var(--primary);
         }
@@ -372,21 +362,23 @@
                 <!-- بخش ورود کد -->
                 <div class="input-section">
                     <div class="form-group">
-                        <label class="form-label">کد پیگیری</label>
+                        <label class="form-label">شماره دیپلم</label>
                         <div class="input-with-button">
                             <input 
                                 type="text" 
-                                id="trackingCode"
+                                id="diplomaNumber"
                                 class="verification-input"
-                                placeholder="مثال: DPL140312345"
-                                maxlength="15"
+                                placeholder="مثال: ۱۲۳۴۵۶۷۸۹۰"
+                                maxlength="10"
+                                inputmode="numeric"
+                                pattern="[0-9]*"
                             >
                             <button id="verifyBtn" class="verify-btn">
                                 <span>استعلام</span>
                             </button>
                         </div>
                         <div class="help-text">
-                            کد پیگیری ۱۵ رقمی دریافتی از سامانه را وارد نمایید
+                            شماره ۱۰ رقمی دیپلم را وارد نمایید
                         </div>
                     </div>
                 </div>
@@ -408,7 +400,6 @@
                 <div id="resultCard" class="result-card" style="display: none;">
                     <div class="result-header">
                         <h2 class="result-title">نتیجه استعلام مدرک دیپلم متوسطه</h2>
-                        <div class="verification-badge">تأیید شده</div>
                     </div>
                     
                     <div class="diploma-info">
@@ -421,16 +412,16 @@
                             <div class="info-value" id="resultNationalId">—</div>
                         </div>
                         <div class="info-item">
-                            <div class="info-label">کد پیگیری</div>
-                            <div class="info-value" id="resultTrackingCode">—</div>
+                            <div class="info-label">شماره دیپلم</div>
+                            <div class="info-value" id="resultDiplomaNumber">—</div>
                         </div>
                         <div class="info-item">
                             <div class="info-label">رشته تحصیلی</div>
                             <div class="info-value" id="resultField">—</div>
                         </div>
                         <div class="info-item">
-                            <div class="info-label">نمره کل</div>
-                            <div class="info-value" id="resultGrade">—</div>
+                            <div class="info-label">معدل کل</div>
+                            <div class="info-value" id="resultAverage">—</div>
                         </div>
                         <div class="info-item">
                             <div class="info-label">تاریخ اخذ</div>
@@ -439,14 +430,6 @@
                         <div class="info-item">
                             <div class="info-label">محل اخذ</div>
                             <div class="info-value" id="resultSchool">—</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">نوع دیپلم</div>
-                            <div class="info-value" id="resultDiplomaType">—</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">معدل کل</div>
-                            <div class="info-value" id="resultAverage">—</div>
                         </div>
                         <div class="info-item">
                             <div class="info-label">وضعیت مدرک</div>
@@ -491,62 +474,54 @@
     <script>
         // پایگاه داده دیپلم‌های متوسطه
         const diplomaDatabase = {
-            "DPL140312345": {
+            "1234567890": {
                 name: "علی رضایی",
                 nationalId: "۰۸۷۰۴۶۶۷۳۹",
-                trackingCode: "DPL140312345",
+                diplomaNumber: "۱۲۳۴۵۶۷۸۹۰",
                 field: "ریاضی فیزیک",
-                grade: "۱۸.۵",
+                average: "۱۷.۸۲",
                 issueDate: "۱۴۰۰/۰۶/۲۰",
                 school: "دبیرستان نمونه دولتی شهید بهشتی - منطقه ۵ تهران",
-                diplomaType: "روزانه",
-                average: "۱۷.۸۲",
                 status: "فارغ التحصیل",
                 finalStatus: "مدرک معتبر - قابل استعلام"
             },
-            "DPL140298765": {
+            "2345678901": {
                 name: "محمد عالی‌زاده",
                 nationalId: "۱۳۶۰۹۳۰۲۳۱",
-                trackingCode: "DPL140298765",
+                diplomaNumber: "۲۳۴۵۶۷۸۹۰۱",
                 field: "علوم تجربی",
-                grade: "۱۹.۲۵",
+                average: "۱۸.۹۵",
                 issueDate: "۱۳۹۹/۰۶/۱۵",
                 school: "دبیرستان غیرانتفاعی فرهنگ - اصفهان",
-                diplomaType: "روزانه",
-                average: "۱۸.۹۵",
                 status: "فارغ التحصیل",
                 finalStatus: "مدرک معتبر - قابل استعلام"
             },
-            "DPL140356789": {
+            "3456789012": {
                 name: "فاطمه محمدی",
                 nationalId: "۱۵۸۲۴۵۷۸۹۶",
-                trackingCode: "DPL140356789",
+                diplomaNumber: "۳۴۵۶۷۸۹۰۱۲",
                 field: "علوم انسانی",
-                grade: "۲۰",
+                average: "۱۹.۷۵",
                 issueDate: "۱۴۰۱/۰۶/۲۵",
                 school: "دبیرستان فرزانگان - مشهد",
-                diplomaType: "تیزهوشان",
-                average: "۱۹.۷۵",
                 status: "فارغ التحصیل",
                 finalStatus: "مدرک معتبر - ممتاز"
             },
-            "DPL140234567": {
+            "4567890123": {
                 name: "سارا کریمی",
                 nationalId: "۱۹۸۷۶۵۴۳۲۱",
-                trackingCode: "DPL140234567",
+                diplomaNumber: "۴۵۶۷۸۹۰۱۲۳",
                 field: "فنی حرفه ای - کامپیوتر",
-                grade: "۱۷.۷۵",
+                average: "۱۶.۹۰",
                 issueDate: "۱۳۹۸/۰۶/۱۰",
                 school: "هنرستان فنی و حرفه ای شهید چمران - شیراز",
-                diplomaType: "فنی حرفه ای",
-                average: "۱۶.۹۰",
                 status: "فارغ التحصیل",
                 finalStatus: "مدرک معتبر - قابل استعلام"
             }
         };
 
         // المنت‌های DOM
-        const trackingCode = document.getElementById('trackingCode');
+        const diplomaNumber = document.getElementById('diplomaNumber');
         const verifyBtn = document.getElementById('verifyBtn');
         const loadingState = document.getElementById('loadingState');
         const errorState = document.getElementById('errorState');
@@ -574,13 +549,11 @@
         function showResult(data) {
             document.getElementById('resultName').textContent = data.name;
             document.getElementById('resultNationalId').textContent = data.nationalId;
-            document.getElementById('resultTrackingCode').textContent = data.trackingCode;
+            document.getElementById('resultDiplomaNumber').textContent = data.diplomaNumber;
             document.getElementById('resultField').textContent = data.field;
-            document.getElementById('resultGrade').textContent = data.grade;
+            document.getElementById('resultAverage').textContent = data.average;
             document.getElementById('resultIssueDate').textContent = data.issueDate;
             document.getElementById('resultSchool').textContent = data.school;
-            document.getElementById('resultDiplomaType').textContent = data.diplomaType;
-            document.getElementById('resultAverage').textContent = data.average;
             document.getElementById('resultStatus').textContent = data.status;
             document.getElementById('resultFinalStatus').textContent = data.finalStatus;
             
@@ -605,23 +578,23 @@
             resultCard.scrollIntoView({ behavior: 'smooth' });
         }
 
-        function validateTrackingCode(code) {
-            if (!code) {
-                return 'لطفاً کد پیگیری را وارد نمایید';
+        function validateDiplomaNumber(number) {
+            if (!number) {
+                return 'لطفاً شماره دیپلم را وارد نمایید';
             }
             
-            if (code.length < 10) {
-                return 'کد پیگیری باید حداقل ۱۰ کاراکتر باشد';
+            if (!/^\d{10}$/.test(number)) {
+                return 'شماره دیپلم باید دقیقاً ۱۰ رقم باشد';
             }
             
             return null;
         }
 
         function verifyDiploma() {
-            const code = trackingCode.value.trim();
+            const number = diplomaNumber.value.trim();
             
             // اعتبارسنجی
-            const validationError = validateTrackingCode(code);
+            const validationError = validateDiplomaNumber(number);
             if (validationError) {
                 showError(validationError);
                 return;
@@ -632,12 +605,12 @@
             
             // شبیه‌سازی تاخیر شبکه
             setTimeout(() => {
-                const record = diplomaDatabase[code];
+                const record = diplomaDatabase[number];
                 
                 if (record) {
                     showResult(record);
                 } else {
-                    showError('کد پیگیری نامعتبر است یا اطلاعاتی برای این کد در سیستم موجود نمی‌باشد');
+                    showError('شماره دیپلم نامعتبر است یا اطلاعاتی برای این شماره در سیستم موجود نمی‌باشد');
                 }
             }, 2000 + Math.random() * 1000);
         }
@@ -652,8 +625,8 @@
         }
 
         function verifyAgain() {
-            trackingCode.value = '';
-            trackingCode.focus();
+            diplomaNumber.value = '';
+            diplomaNumber.focus();
             resultCard.style.display = 'none';
             errorState.style.display = 'none';
         }
@@ -669,22 +642,27 @@
         // رویدادها
         verifyBtn.addEventListener('click', verifyDiploma);
 
-        trackingCode.addEventListener('keypress', function(e) {
+        diplomaNumber.addEventListener('keypress', function(e) {
             if (e.key === 'Enter') {
                 verifyDiploma();
             }
         });
 
+        // فقط اعداد مجاز - صفحه کلید عددی
+        diplomaNumber.addEventListener('input', function(e) {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+
         // فوکوس خودکار روی input
         document.addEventListener('DOMContentLoaded', function() {
-            trackingCode.focus();
+            diplomaNumber.focus();
         });
 
         // ثبت لاگ استعلام‌ها
         const queryLog = [];
-        window.logQuery = function(code, result) {
+        window.logQuery = function(number, result) {
             queryLog.push({
-                code: code,
+                number: number,
                 result: result,
                 timestamp: new Date().toLocaleString('fa-IR'),
                 ip: '...'
