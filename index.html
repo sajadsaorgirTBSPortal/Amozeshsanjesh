@@ -462,8 +462,6 @@
             <div class="footer-links">
                 <a href="https://www.medu.ir/" target="_blank">پورتال آموزش و پرورش</a>
                 <a href="https://snd.medu.ir/" target="_blank">سامانه دانش آموزی</a>
-                <a href="#" onclick="showAbout()">درباره سامانه</a>
-                <a href="#" onclick="showContact()">تماس با پشتیبانی</a>
             </div>
             <div class="copyright">
                 کلیه حقوق این سامانه متعلق به وزارت آموزش و پرورش می‌باشد © ۱۴۰۳
@@ -474,18 +472,18 @@
     <script>
         // پایگاه داده دیپلم‌های متوسطه
         const diplomaDatabase = {
-            "6700147183": {
-                name: "سعید مهدی زاده قوناققران",
-                nationalId: "۰۰۲۰۱۲۴۷۰۸",
-                diplomaNumber: "۴۰۳۰۱۲۲۵۴۸۷۵",
+            "1234567890": {
+                name: "علی رضایی",
+                nationalId: "۰۸۷۰۴۶۶۷۳۹",
+                diplomaNumber: "۱۲۳۴۵۶۷۸۹۰",
                 field: "ریاضی فیزیک",
-                average: "۱۶.۳۳",
-                issueDate: "۱۴۰۳/۰۸/۲۰",
-                school: "منطقه ۱۰ تهران",
+                average: "۱۷.۸۲",
+                issueDate: "۱۴۰۰/۰۶/۲۰",
+                school: "دبیرستان نمونه دولتی شهید بهشتی - منطقه ۵ تهران",
                 status: "فارغ التحصیل",
-                finalStatus: "درانتظارتایید و پرداخت‌شهریه"
+                finalStatus: "مدرک معتبر - قابل استعلام"
             },
-            "2345179901": {
+            "2345678901": {
                 name: "محمد عالی‌زاده",
                 nationalId: "۱۳۶۰۹۳۰۲۳۱",
                 diplomaNumber: "۲۳۴۵۶۷۸۹۰۱",
@@ -494,7 +492,7 @@
                 issueDate: "۱۳۹۹/۰۶/۱۵",
                 school: "دبیرستان غیرانتفاعی فرهنگ - اصفهان",
                 status: "فارغ التحصیل",
-                finalStatus: "در انتظارتایید و پرداخت‌شهریه"
+                finalStatus: "مدرک معتبر - قابل استعلام"
             },
             "3456789012": {
                 name: "فاطمه محمدی",
@@ -629,14 +627,6 @@
             diplomaNumber.focus();
             resultCard.style.display = 'none';
             errorState.style.display = 'none';
-        }
-
-        function showAbout() {
-            alert('سامانه استعلام دیپلم متوسطه\n\nاین سامانه جهت راستی‌آزمایی مدارک دیپلم متوسطه صادر شده توسط وزارت آموزش و پرورش طراحی شده است.\n\nورژن: ۲.۰\nپایگاه داده: ۱۴۰۳');
-        }
-
-        function showContact() {
-            alert('اطلاعات تماس:\n\nآموزش و پرورش: ۰۲۱۸۸۵۰۱۰۰۰\nپشتیبانی فنی: ۰۲۱-۸۸۵۶۰۰۰۰\nایمیل: support@medu.ir\nساعات کاری: شنبه تا چهارشنبه ۸:۰۰ تا ۱۶:۰۰');
         }
 
         // رویدادها
