@@ -17,13 +17,7 @@
             --text-light: #64748b;
             --border: #e2e8f0;
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: "Vazirmatn", "Tahoma", sans-serif;
             background: linear-gradient(135deg, #059669 0%, #047857 100%);
@@ -31,12 +25,7 @@
             padding: 20px;
             color: var(--text);
         }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
+        .container { max-width: 1000px; margin: 0 auto; }
         .education-header {
             background: linear-gradient(135deg, #059669, #047857);
             color: white;
@@ -46,18 +35,8 @@
             box-shadow: 0 8px 32px rgba(5, 150, 105, 0.3);
             border-bottom: 4px solid #dc2626;
         }
-
-        .education-header h1 {
-            font-size: 24px;
-            margin-bottom: 8px;
-            font-weight: 700;
-        }
-
-        .education-header .subtitle {
-            font-size: 14px;
-            opacity: 0.9;
-        }
-
+        .education-header h1 { font-size: 24px; margin-bottom: 8px; font-weight: 700; }
+        .education-header .subtitle { font-size: 14px; opacity: 0.9; }
         .main-card {
             background: var(--surface);
             border-radius: 0 0 15px 15px;
@@ -65,29 +44,15 @@
             overflow: hidden;
             margin-bottom: 20px;
         }
-
         .school-banner {
             background: linear-gradient(90deg, #f0fdf4, #dcfce7);
             padding: 15px;
             text-align: center;
             border-bottom: 2px solid #059669;
         }
-
-        .school-banner h2 {
-            color: #059669;
-            font-size: 18px;
-            margin-bottom: 5px;
-        }
-
-        .school-banner p {
-            color: var(--text-light);
-            font-size: 13px;
-        }
-
-        .content-section {
-            padding: 25px;
-        }
-
+        .school-banner h2 { color: #059669; font-size: 18px; margin-bottom: 5px; }
+        .school-banner p { color: var(--text-light); font-size: 13px; }
+        .content-section { padding: 25px; }
         .input-section {
             background: #f8fafc;
             padding: 20px;
@@ -95,11 +60,7 @@
             border: 1px solid var(--border);
             margin-bottom: 20px;
         }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
+        .form-group { margin-bottom: 15px; }
         .form-label {
             display: block;
             margin-bottom: 8px;
@@ -107,19 +68,8 @@
             color: var(--primary);
             font-size: 14px;
         }
-
-        .input-with-button {
-            display: flex;
-            gap: 10px;
-            align-items: stretch;
-        }
-
-        @media (max-width: 768px) {
-            .input-with-button {
-                flex-direction: column;
-            }
-        }
-
+        .input-with-button { display: flex; gap: 10px; align-items: stretch; }
+        @media (max-width: 768px) { .input-with-button { flex-direction: column; } }
         .verification-input {
             flex: 1;
             padding: 12px 15px;
@@ -132,13 +82,11 @@
             background: white;
             height: 45px;
         }
-
         .verification-input:focus {
             outline: none;
             border-color: var(--primary);
             box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
         }
-
         .verify-btn {
             background: linear-gradient(135deg, #059669, #047857);
             color: white;
@@ -156,18 +104,8 @@
             justify-content: center;
             height: 45px;
         }
-
-        .verify-btn:hover {
-            background: linear-gradient(135deg, #047857, #065f46);
-        }
-
-        .help-text {
-            text-align: center;
-            color: var(--text-light);
-            font-size: 12px;
-            margin-top: 8px;
-        }
-
+        .verify-btn:hover { background: linear-gradient(135deg, #047857, #065f46); }
+        .help-text { text-align: center; color: var(--text-light); font-size: 12px; margin-top: 8px; }
         .loading-state {
             background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
             border: 1px solid #bae6fd;
@@ -176,7 +114,6 @@
             text-align: center;
             margin: 15px 0;
         }
-
         .loading-spinner {
             width: 40px;
             height: 40px;
@@ -186,12 +123,7 @@
             animation: spin 1s linear infinite;
             margin: 0 auto 15px;
         }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         .error-state {
             background: linear-gradient(135deg, #fef2f2, #fee2e2);
             border: 1px solid #fecaca;
@@ -201,17 +133,6 @@
             color: var(--secondary);
             margin: 15px 0;
         }
-
-        .success-state {
-            background: linear-gradient(135deg, #f0fdf4, #dcfce7);
-            border: 1px solid #bbf7d0;
-            border-radius: 10px;
-            padding: 20px;
-            text-align: center;
-            color: var(--success);
-            margin: 15px 0;
-        }
-
         .result-card {
             background: white;
             border-radius: 10px;
@@ -219,47 +140,27 @@
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
             border: 1px solid var(--border);
         }
-
         .result-header {
             text-align: center;
             margin-bottom: 20px;
             padding-bottom: 15px;
             border-bottom: 1px solid var(--border);
         }
-
-        .result-title {
-            color: var(--primary);
-            font-size: 18px;
-            margin-bottom: 8px;
-        }
-
+        .result-title { color: var(--primary); font-size: 18px; margin-bottom: 8px; }
         .diploma-info {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 12px;
             margin: 20px 0;
         }
-
         .info-item {
             background: #f8fafc;
             padding: 10px 12px;
             border-radius: 6px;
             border-right: 3px solid var(--primary);
         }
-
-        .info-label {
-            font-size: 11px;
-            color: var(--text-light);
-            margin-bottom: 4px;
-            font-weight: 500;
-        }
-
-        .info-value {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text);
-        }
-
+        .info-label { font-size: 11px; color: var(--text-light); margin-bottom: 4px; font-weight: 500; }
+        .info-value { font-size: 14px; font-weight: 600; color: var(--text); }
         .diploma-status {
             background: #dcfce7;
             border: 1px solid #bbf7d0;
@@ -268,13 +169,7 @@
             text-align: center;
             margin: 15px 0;
         }
-
-        .status-active {
-            color: var(--success);
-            font-weight: 700;
-            font-size: 16px;
-        }
-
+        .status-active { color: var(--success); font-weight: 700; font-size: 16px; }
         .action-buttons {
             display: flex;
             gap: 10px;
@@ -282,7 +177,6 @@
             margin-top: 20px;
             flex-wrap: wrap;
         }
-
         .btn {
             padding: 10px 18px;
             border: none;
@@ -295,18 +189,12 @@
             align-items: center;
             gap: 5px;
         }
-
         .btn-outline {
             background: transparent;
             border: 1px solid var(--primary);
             color: var(--primary);
         }
-
-        .btn-outline:hover {
-            background: var(--primary);
-            color: white;
-        }
-
+        .btn-outline:hover { background: var(--primary); color: white; }
         .footer {
             background: var(--primary-dark);
             color: white;
@@ -315,7 +203,6 @@
             border-radius: 10px;
             margin-top: 20px;
         }
-
         .footer-links {
             display: flex;
             justify-content: center;
@@ -323,43 +210,23 @@
             margin-bottom: 12px;
             flex-wrap: wrap;
         }
-
-        .footer-links a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s ease;
-            font-size: 12px;
-        }
-
-        .footer-links a:hover {
-            opacity: 0.8;
-        }
-
-        .copyright {
-            font-size: 11px;
-            opacity: 0.9;
-        }
+        .footer-links a { color: white; text-decoration: none; font-size: 12px; }
+        .footer-links a:hover { opacity: 0.8; }
+        .copyright { font-size: 11px; opacity: 0.9; }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- هدر آموزش و پرورش -->
         <div class="education-header">
             <h1>وزارت آموزش و پرورش</h1>
             <div class="subtitle">سامانه استعلام الکترونیکی دیپلم متوسطه</div>
         </div>
-
-        <!-- کارت اصلی -->
         <div class="main-card">
-            <!-- بنر مدرسه -->
             <div class="school-banner">
                 <h2>استعلام مدرک دیپلم متوسطه</h2>
                 <p>High School Diploma Verification System</p>
             </div>
-
-            <!-- بخش محتوا -->
             <div class="content-section">
-                <!-- بخش ورود کد -->
                 <div class="input-section">
                     <div class="form-group">
                         <label class="form-label">شماره دیپلم</label>
@@ -371,37 +238,30 @@
                                 placeholder="مثال: ۱۲۳۴۵۶۷۸۹۰"
                                 maxlength="10"
                                 inputmode="numeric"
-                                pattern="[0-9]*"
                             >
                             <button id="verifyBtn" class="verify-btn">
                                 <span>استعلام</span>
                             </button>
                         </div>
-                        <div class="help-text">
-                            شماره ۱۰ رقمی دیپلم را وارد نمایید
-                        </div>
+                        <div class="help-text">شماره ۱۰ رقمی دیپلم را وارد نمایید</div>
                     </div>
                 </div>
 
-                <!-- وضعیت لودینگ -->
                 <div id="loadingState" class="loading-state" style="display: none;">
                     <div class="loading-spinner"></div>
                     <h3>در حال بررسی در سامانه مرکزی آموزش و پرورش</h3>
                     <p>لطفاً چند لحظه صبر کنید...</p>
                 </div>
 
-                <!-- وضعیت خطا -->
                 <div id="errorState" class="error-state" style="display: none;">
                     <h3>خطا در دریافت اطلاعات</h3>
                     <p id="errorMessage"></p>
                 </div>
 
-                <!-- کارت نتیجه -->
                 <div id="resultCard" class="result-card" style="display: none;">
                     <div class="result-header">
                         <h2 class="result-title">نتیجه استعلام مدرک دیپلم متوسطه</h2>
                     </div>
-                    
                     <div class="diploma-info">
                         <div class="info-item">
                             <div class="info-label">نام و نام خانوادگی</div>
@@ -436,41 +296,29 @@
                             <div class="info-value" id="resultStatus">—</div>
                         </div>
                     </div>
-
                     <div class="diploma-status">
                         <div class="status-active" id="resultFinalStatus">—</div>
                         <div class="info-label">وضعیت نهایی مدرک</div>
                     </div>
-
                     <div class="action-buttons">
-                        <button class="btn btn-outline" onclick="printDocument()">
-                            چاپ تأییدیه
-                        </button>
-                        <button class="btn btn-outline" onclick="generatePDF()">
-                            دریافت PDF
-                        </button>
-                        <button class="btn btn-outline" onclick="verifyAgain()">
-                            استعلام جدید
-                        </button>
+                        <button class="btn btn-outline" onclick="printDocument()">چاپ تأییدیه</button>
+                        <button class="btn btn-outline" onclick="generatePDF()">دریافت PDF</button>
+                        <button class="btn btn-outline" onclick="verifyAgain()">استعلام جدید</button>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- فوتر -->
         <footer class="footer">
             <div class="footer-links">
                 <a href="https://www.medu.ir/" target="_blank">پورتال آموزش و پرورش</a>
                 <a href="https://snd.medu.ir/" target="_blank">سامانه دانش آموزی</a>
             </div>
-            <div class="copyright">
-                کلیه حقوق این سامانه متعلق به وزارت آموزش و پرورش می‌باشد © ۱۴۰۳
-            </div>
+            <div class="copyright">کلیه حقوق این سامانه متعلق به وزارت آموزش و پرورش می‌باشد © ۱۴۰۳</div>
         </footer>
     </div>
 
     <script>
-        // پایگاه داده دیپلم‌های متوسطه
+        // ✅ پایگاه داده اصلاح‌شده — همه مقادیر داخل کوتیشن هستند
         const diplomaDatabase = {
             "3000789012": {
                 name: "پارمیدا موسوي",
@@ -493,7 +341,7 @@
                 school: "منطقه شهرستان ورزقان",
                 status: "فارغ التحصیل",
                 finalStatus: "پرداخت شهریه انجام شد عملیات سیستم ۱۵ روز کاری"
-                },
+            },
             "3456789012": {
                 name: "حامد پورحیدر",
                 nationalId: "۱۴۹۰۱۰۴۴۲۹",
@@ -504,7 +352,7 @@
                 school: "منطقه شهرستان ورزقان",
                 status: "فارغ التحصیل",
                 finalStatus: "در انتظار پرداخت شهریه و تایید"
-                },
+            },
             "3456001012": {
                 name: "محمد رضا پور رستم",
                 nationalId: "۵۶۷۰۰۱۸۴۴۳",
@@ -515,7 +363,7 @@
                 school: "منطقه شهرستان ورزقان",
                 status: "فارغ التحصیل",
                 finalStatus: "در انتظار پرداخت شهریه و تایید"
-                },
+            },
             "3456674012": {
                 name: "مرتضی ملکی",
                 nationalId: "۱۴۹۰۱۱۵۱۶۱",
@@ -534,10 +382,10 @@
                 field: "معماری",
                 average: "۱۷.۷۵",
                 issueDate: "۱۴۰۵/۰۶/۱۱",
-                school: تهران منقطه ۷",
+                school: "تهران منطقه ۷",
                 status: "فارغ التحصیل",
                 finalStatus: "در انتظار پرداخت شهریه و تایید"
-                },
+            },
             "3458389012": {
                 name: "اسماعیل پور عباس",
                 nationalId: "۱۰۸۵",
@@ -548,7 +396,7 @@
                 school: "منطقه شهرستان ورزقان",
                 status: "فارغ التحصیل",
                 finalStatus: "در انتظار پرداخت شهریه و تایید"
-                },
+            },
             "3456777312": {
                 name: "حامد پورحیدر",
                 nationalId: "۱۴۹۰۱۰۴۴۲۹",
@@ -567,13 +415,12 @@
                 field: "ادبیات و علوم انسانی",
                 average: "۱۷.۷۵",
                 issueDate: "۱۴۰۵/۰۶/۱۱",
-                school: "تهران متطقه ۱۲",
+                school: "تهران منطقه ۱۲",
                 status: "فارغ التحصیل",
                 finalStatus: "در انتظار پرداخت شهریه و تایید"
             }
         };
 
-        // المنت‌های DOM
         const diplomaNumber = document.getElementById('diplomaNumber');
         const verifyBtn = document.getElementById('verifyBtn');
         const loadingState = document.getElementById('loadingState');
@@ -581,16 +428,12 @@
         const errorMessage = document.getElementById('errorMessage');
         const resultCard = document.getElementById('resultCard');
 
-        // توابع اصلی
         function showLoading() {
             loadingState.style.display = 'block';
             errorState.style.display = 'none';
             resultCard.style.display = 'none';
         }
-
-        function hideLoading() {
-            loadingState.style.display = 'none';
-        }
+        function hideLoading() { loadingState.style.display = 'none'; }
 
         function showError(message) {
             errorMessage.textContent = message;
@@ -610,73 +453,42 @@
             document.getElementById('resultStatus').textContent = data.status;
             document.getElementById('resultFinalStatus').textContent = data.finalStatus;
             
-            // تغییر رنگ وضعیت بر اساس معدل
             const statusElement = document.getElementById('resultFinalStatus');
-            const average = parseFloat(data.average);
+            const average = parseFloat(data.average.replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)));
             
-            if (average >= 19) {
-                statusElement.style.color = '#059669';
-            } else if (average >= 17) {
-                statusElement.style.color = '#d97706';
-            } else if (average >= 15) {
-                statusElement.style.color = '#dc2626';
-            } else {
-                statusElement.style.color = '#6b7280';
-            }
+            if (average >= 19) statusElement.style.color = '#059669';
+            else if (average >= 17) statusElement.style.color = '#d97706';
+            else if (average >= 15) statusElement.style.color = '#dc2626';
+            else statusElement.style.color = '#6b7280';
             
             resultCard.style.display = 'block';
             hideLoading();
-            
-            // اسکرول به نتیجه
             resultCard.scrollIntoView({ behavior: 'smooth' });
         }
 
         function validateDiplomaNumber(number) {
-            if (!number) {
-                return 'لطفاً شماره دیپلم را وارد نمایید';
-            }
-            
-            if (!/^\d{10}$/.test(number)) {
-                return 'شماره دیپلم باید دقیقاً ۱۰ رقم باشد';
-            }
-            
+            if (!number) return 'لطفاً شماره دیپلم را وارد نمایید';
+            if (!/^\d{10}$/.test(number)) return 'شماره دیپلم باید دقیقاً ۱۰ رقم باشد';
             return null;
         }
 
         function verifyDiploma() {
             const number = diplomaNumber.value.trim();
-            
-            // اعتبارسنجی
             const validationError = validateDiplomaNumber(number);
-            if (validationError) {
-                showError(validationError);
-                return;
-            }
+            if (validationError) { showError(validationError); return; }
             
-            // شبیه‌سازی فرآیند استعلام
             showLoading();
-            
-            // شبیه‌سازی تاخیر شبکه
             setTimeout(() => {
                 const record = diplomaDatabase[number];
-                
-                if (record) {
-                    showResult(record);
-                } else {
-                    showError('شماره دیپلم نامعتبر است یا اطلاعاتی برای این شماره در سیستم موجود نمی‌باشد');
-                }
-            }, 2000 + Math.random() * 1000);
+                if (record) showResult(record);
+                else showError('شماره دیپلم نامعتبر است یا اطلاعاتی برای این شماره در سیستم موجود نمی‌باشد');
+            }, 1500 + Math.random() * 1000);
         }
 
-        // توابع کمکی
-        function printDocument() {
-            window.print();
-        }
-
+        function printDocument() { window.print(); }
         function generatePDF() {
             alert('در حال تولید PDF تأییدیه دیپلم...\n\nاین قابلیت در نسخه کامل سامانه فعال می‌باشد.');
         }
-
         function verifyAgain() {
             diplomaNumber.value = '';
             diplomaNumber.focus();
@@ -684,35 +496,16 @@
             errorState.style.display = 'none';
         }
 
-        // رویدادها
         verifyBtn.addEventListener('click', verifyDiploma);
-
         diplomaNumber.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                verifyDiploma();
-            }
+            if (e.key === 'Enter') verifyDiploma();
         });
-
-        // فقط اعداد مجاز - صفحه کلید عددی
-        diplomaNumber.addEventListener('input', function(e) {
+        diplomaNumber.addEventListener('input', function() {
             this.value = this.value.replace(/[^0-9]/g, '');
         });
-
-        // فوکوس خودکار روی input
         document.addEventListener('DOMContentLoaded', function() {
             diplomaNumber.focus();
         });
-
-        // ثبت لاگ استعلام‌ها
-        const queryLog = [];
-        window.logQuery = function(number, result) {
-            queryLog.push({
-                number: number,
-                result: result,
-                timestamp: new Date().toLocaleString('fa-IR'),
-                ip: '...'
-            });
-        };
     </script>
 </body>
 </html>
