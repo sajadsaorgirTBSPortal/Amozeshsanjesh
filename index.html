@@ -195,15 +195,7 @@
             color: var(--primary);
         }
         .btn-outline:hover { background: var(--primary); color: white; }
-        .btn-primary {
-            background: var(--primary);
-            color: white;
-        }
-        .btn-primary:hover { background: var(--primary-dark); }
-        .btn-copy {
-            background: #0ea5e9;
-            color: white;
-        }
+        .btn-copy { background: #0ea5e9; color: white; }
         .btn-copy:hover { background: #0284c7; }
         .footer {
             background: var(--primary-dark);
@@ -221,10 +213,7 @@
             flex-wrap: wrap;
         }
         .footer-links a { color: white; text-decoration: none; font-size: 12px; }
-        .footer-links a:hover { opacity: 0.8; }
         .copyright { font-size: 11px; opacity: 0.9; }
-
-        /* ===== استایل لیست شماره‌ها ===== */
         .list-section {
             margin-top: 20px;
             background: #f8fafc;
@@ -243,19 +232,8 @@
             padding-bottom: 10px;
             border-bottom: 1px dashed var(--border);
         }
-        .list-header h3 {
-            color: var(--primary);
-            font-size: 15px;
-        }
-        .list-actions {
-            display: flex;
-            gap: 8px;
-        }
-        .list-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-        }
+        .list-header h3 { color: var(--primary); font-size: 15px; }
+        .list-table { width: 100%; border-collapse: collapse; font-size: 13px; }
         .list-table th {
             background: #dcfce7;
             color: var(--primary-dark);
@@ -282,12 +260,7 @@
             background: #fef9c3 !important;
         }
         .list-table .code-cell:hover { background: #fde68a !important; }
-        .copy-hint {
-            font-size: 11px;
-            color: var(--text-light);
-            text-align: center;
-            margin-top: 8px;
-        }
+        .copy-hint { font-size: 11px; color: var(--text-light); text-align: center; margin-top: 8px; }
         .copied-toast {
             position: fixed;
             bottom: 30px;
@@ -305,15 +278,8 @@
             pointer-events: none;
             transition: opacity 0.3s ease, bottom 0.3s ease;
         }
-        .copied-toast.show {
-            opacity: 1;
-            bottom: 50px;
-        }
-        .toggle-list-btn {
-            background: #6366f1;
-            color: white;
-            margin-top: 10px;
-        }
+        .copied-toast.show { opacity: 1; bottom: 50px; }
+        .toggle-list-btn { background: #6366f1; color: white; margin-top: 10px; }
         .toggle-list-btn:hover { background: #4f46e5; }
     </style>
 </head>
@@ -341,25 +307,18 @@
                                 maxlength="12"
                                 inputmode="numeric"
                             >
-                            <button id="verifyBtn" class="verify-btn">
-                                <span>استعلام</span>
-                            </button>
+                            <button id="verifyBtn" class="verify-btn"><span>استعلام</span></button>
                         </div>
                         <div class="help-text">شماره دیپلم را با اعداد فارسی یا انگلیسی وارد نمایید</div>
                     </div>
-
-                    <!-- دکمه نمایش لیست شماره‌ها -->
                     <div style="text-align:center;">
-                        <button id="toggleListBtn" class="btn toggle-list-btn">
-                            📋 نمایش لیست شماره دیپلم‌ها
-                        </button>
+                        <button id="toggleListBtn" class="btn toggle-list-btn">📋 نمایش لیست شماره دیپلم‌ها</button>
                     </div>
                 </div>
 
-                <!-- بخش لیست شماره‌ها -->
                 <div id="listSection" class="list-section">
                     <div class="list-header">
-                        <h3>لیست شماره دیپلم‌های موجود در سیستم</h3>
+                        <h3>لیست شماره دیپلم‌های موجود (همان شماره‌ای که باید جستجو کنید)</h3>
                         <div class="list-actions">
                             <button class="btn btn-copy" onclick="copyAllCodes()">📋 کپی همه شماره‌ها</button>
                         </div>
@@ -369,13 +328,13 @@
                             <tr>
                                 <th style="width:40px;">#</th>
                                 <th>نام و نام خانوادگی</th>
-                                <th style="width:140px;">شماره دیپلم</th>
+                                <th style="width:140px;">شماره جستجو</th>
                                 <th style="width:80px;">معدل</th>
                             </tr>
                         </thead>
                         <tbody id="listTableBody"></tbody>
                     </table>
-                    <div class="copy-hint">💡 روی هر شماره کلیک کنید تا کپی شود</div>
+                    <div class="copy-hint">💡 روی هر شماره کلیک کنید تا کپی شود — این همان شماره‌ای است که باید در کادر بالا وارد کنید</div>
                 </div>
 
                 <div id="loadingState" class="loading-state" style="display: none;">
@@ -394,38 +353,14 @@
                         <h2 class="result-title">نتیجه استعلام مدرک دیپلم متوسطه</h2>
                     </div>
                     <div class="diploma-info">
-                        <div class="info-item">
-                            <div class="info-label">نام و نام خانوادگی</div>
-                            <div class="info-value" id="resultName">—</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">کد ملی</div>
-                            <div class="info-value" id="resultNationalId">—</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">شماره دیپلم</div>
-                            <div class="info-value" id="resultDiplomaNumber">—</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">رشته تحصیلی</div>
-                            <div class="info-value" id="resultField">—</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">معدل کل</div>
-                            <div class="info-value" id="resultAverage">—</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">تاریخ اخذ</div>
-                            <div class="info-value" id="resultIssueDate">—</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">محل اخذ</div>
-                            <div class="info-value" id="resultSchool">—</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="info-label">وضعیت مدرک</div>
-                            <div class="info-value" id="resultStatus">—</div>
-                        </div>
+                        <div class="info-item"><div class="info-label">نام و نام خانوادگی</div><div class="info-value" id="resultName">—</div></div>
+                        <div class="info-item"><div class="info-label">کد ملی</div><div class="info-value" id="resultNationalId">—</div></div>
+                        <div class="info-item"><div class="info-label">شماره دیپلم</div><div class="info-value" id="resultDiplomaNumber">—</div></div>
+                        <div class="info-item"><div class="info-label">رشته تحصیلی</div><div class="info-value" id="resultField">—</div></div>
+                        <div class="info-item"><div class="info-label">معدل کل</div><div class="info-value" id="resultAverage">—</div></div>
+                        <div class="info-item"><div class="info-label">تاریخ اخذ</div><div class="info-value" id="resultIssueDate">—</div></div>
+                        <div class="info-item"><div class="info-label">محل اخذ</div><div class="info-value" id="resultSchool">—</div></div>
+                        <div class="info-item"><div class="info-label">وضعیت مدرک</div><div class="info-value" id="resultStatus">—</div></div>
                     </div>
                     <div class="diploma-status">
                         <div class="status-active" id="resultFinalStatus">—</div>
@@ -448,11 +383,10 @@
         </footer>
     </div>
 
-    <!-- Toast برای نمایش پیام کپی -->
     <div id="copiedToast" class="copied-toast">✅ کپی شد!</div>
 
     <script>
-        // ✅ تبدیل اعداد فارسی/عربی به انگلیسی
+        // تبدیل اعداد فارسی/عربی به انگلیسی
         function toEnglishDigits(str) {
             const persian = '۰۱۲۳۴۵۶۷۸۹';
             const arabic = '٠١٢٣٤٥٦٧٨٩';
@@ -468,228 +402,106 @@
             return result;
         }
 
-        // ✅ پایگاه داده
         const diplomaDatabase = {
             "3000789012": {
-                name: "پارمیدا موسوي",
-                nationalId: "۰۲۰۱۰۴۶۴۵۸",
-                diplomaNumber: "۳۰۰۸۱۴۹۰۱۲",
-                field: "تجربی",
-                average: "۱۷.۷۵",
-                issueDate: "۱۴۰۵/۰۶/۱۱",
-                school: "تهران منطقه ۷",
-                status: "فارغ التحصیل",
-                finalStatus: "در انتظار پرداخت شهریه و تایید"
+                name: "پارمیدا موسوي", nationalId: "۰۲۰۱۰۴۶۴۵۸", diplomaNumber: "۳۰۰۸۱۴۹۰۱۲",
+                field: "تجربی", average: "۱۷.۷۵", issueDate: "۱۴۰۵/۰۶/۱۱",
+                school: "تهران منطقه ۷", status: "فارغ التحصیل", finalStatus: "در انتظار پرداخت شهریه و تایید"
             },
             "2345678901": {
-                name: "محمود کریم زاده ورزقان",
-                nationalId: "۵۶۷۹۸۷۲۶۹۲",
-                diplomaNumber: "۲۳۴۵۶۷۸۹۰۱",
-                field: "مکانیک خودرو",
-                average: "۱۷.۵۱",
-                issueDate: "۱۴۰۵/۰۵/۲۶",
-                school: "منطقه شهرستان ورزقان",
-                status: "فارغ التحصیل",
-                finalStatus: "پرداخت شهریه انجام شد عملیات سیستم ۱۵ روز کاری"
+                name: "محمود کریم زاده ورزقان", nationalId: "۵۶۷۹۸۷۲۶۹۲", diplomaNumber: "۲۳۴۵۶۷۸۹۰۱",
+                field: "مکانیک خودرو", average: "۱۷.۵۱", issueDate: "۱۴۰۵/۰۵/۲۶",
+                school: "منطقه شهرستان ورزقان", status: "فارغ التحصیل", finalStatus: "پرداخت شهریه انجام شد عملیات سیستم ۱۵ روز کاری"
             },
             "3456789012": {
-                name: "حامد پورحیدر",
-                nationalId: "۱۴۹۰۱۰۴۴۲۹",
-                diplomaNumber: "۳۴۵۶۷۸۹۰۱۲",
-                field: "مکانیک خودرو",
-                average: "۱۷.۰۳",
-                issueDate: "۱۴۰۵/۰۵/۲۷",
-                school: "منطقه شهرستان ورزقان",
-                status: "فارغ التحصیل",
-                finalStatus: "در انتظار پرداخت شهریه و تایید"
+                name: "حامد پورحیدر", nationalId: "۱۴۹۰۱۰۴۴۲۹", diplomaNumber: "۳۴۵۶۷۸۹۰۱۲",
+                field: "مکانیک خودرو", average: "۱۷.۰۳", issueDate: "۱۴۰۵/۰۵/۲۷",
+                school: "منطقه شهرستان ورزقان", status: "فارغ التحصیل", finalStatus: "در انتظار پرداخت شهریه و تایید"
             },
             "3456001012": {
-                name: "محمد رضا پور رستم",
-                nationalId: "۵۶۷۰۰۱۸۴۴۳",
-                diplomaNumber: "۳۴۵۷۶۱۹۰۱۲",
-                field: "جوشکاری",
-                average: "۱۶.۲۶",
-                issueDate: "۱۴۰۵/۰۶/۰۱",
-                school: "منطقه شهرستان ورزقان",
-                status: "فارغ التحصیل",
-                finalStatus: "در انتظار پرداخت شهریه و تایید"
+                name: "محمد رضا پور رستم", nationalId: "۵۶۷۰۰۱۸۴۴۳", diplomaNumber: "۳۴۵۷۶۱۹۰۱۲",
+                field: "جوشکاری", average: "۱۶.۲۶", issueDate: "۱۴۰۵/۰۶/۰۱",
+                school: "منطقه شهرستان ورزقان", status: "فارغ التحصیل", finalStatus: "در انتظار پرداخت شهریه و تایید"
             },
             "3456674012": {
-                name: "مرتضی ملکی",
-                nationalId: "۱۴۹۰۱۱۵۱۶۱",
-                diplomaNumber: "۳۴۵۶۱۵۹۰۱۲",
-                field: "ادبیات و علوم انسانی",
-                average: "۱۷.۳۱",
-                issueDate: "۱۴۰۵/۰۶/۰۱",
-                school: "منطقه شهرستان ورزقان",
-                status: "فارغ التحصیل",
-                finalStatus: "در انتظار پرداخت شهریه و تایید"
+                name: "مرتضی ملکی", nationalId: "۱۴۹۰۱۱۵۱۶۱", diplomaNumber: "۳۴۵۶۱۵۹۰۱۲",
+                field: "ادبیات و علوم انسانی", average: "۱۷.۳۱", issueDate: "۱۴۰۵/۰۶/۰۱",
+                school: "منطقه شهرستان ورزقان", status: "فارغ التحصیل", finalStatus: "در انتظار پرداخت شهریه و تایید"
             },
             "3485789012": {
-                name: "پارمیدا موسوي",
-                nationalId: "۰۲۰۱۰۴۶۴۵۸",
-                diplomaNumber: "۳۰۰۸۱۴۹۰۱۲",
-                field: "معماری",
-                average: "۱۷.۷۵",
-                issueDate: "۱۴۰۵/۰۶/۱۱",
-                school: "تهران منطقه ۷",
-                status: "فارغ التحصیل",
-                finalStatus: "در انتظار پرداخت شهریه و تایید"
+                name: "پارمیدا موسوي", nationalId: "۰۲۰۱۰۴۶۴۵۸", diplomaNumber: "۳۰۰۸۱۴۹۰۱۲",
+                field: "معماری", average: "۱۷.۷۵", issueDate: "۱۴۰۵/۰۶/۱۱",
+                school: "تهران منطقه ۷", status: "فارغ التحصیل", finalStatus: "در انتظار پرداخت شهریه و تایید"
             },
             "3458389012": {
-                name: "اسماعیل پور عباس",
-                nationalId: "۱۰۸۵",
-                diplomaNumber: "۳۸۵۰۷۸۰۹۹۱",
-                field: "جوشکاری",
-                average: "۱۸.۲۴",
-                issueDate: "۱۴۰۵/۰۶/۰۱",
-                school: "منطقه شهرستان ورزقان",
-                status: "فارغ التحصیل",
-                finalStatus: "در انتظار پرداخت شهریه و تایید"
+                name: "اسماعیل پور عباس", nationalId: "۱۰۸۵", diplomaNumber: "۳۸۵۰۷۸۰۹۹۱",
+                field: "جوشکاری", average: "۱۸.۲۴", issueDate: "۱۴۰۵/۰۶/۰۱",
+                school: "منطقه شهرستان ورزقان", status: "فارغ التحصیل", finalStatus: "در انتظار پرداخت شهریه و تایید"
             },
             "3456777312": {
-                name: "حامد پورحیدر",
-                nationalId: "۱۴۹۰۱۰۴۴۲۹",
-                diplomaNumber: "۳۴۵۶۷۸۹۰۱۲",
-                field: "مکانیک خودرو",
-                average: "۱۷.۰۳",
-                issueDate: "۱۴۰۵/۰۵/۲۷",
-                school: "منطقه شهرستان ورزقان",
-                status: "فارغ التحصیل",
-                finalStatus: "در انتظار پرداخت شهریه و تایید"
+                name: "حامد پورحیدر", nationalId: "۱۴۹۰۱۰۴۴۲۹", diplomaNumber: "۳۴۵۶۷۸۹۰۱۲",
+                field: "مکانیک خودرو", average: "۱۷.۰۳", issueDate: "۱۴۰۵/۰۵/۲۷",
+                school: "منطقه شهرستان ورزقان", status: "فارغ التحصیل", finalStatus: "در انتظار پرداخت شهریه و تایید"
             },
             "4567890123": {
-                name: "زهرا عباسیان",
-                nationalId: "۶۶۴۰۱۴۵۵۴۵",
-                diplomaNumber: "۳۵۰۶۵۹۸۷۴۲۵۴",
-                field: "ادبیات و علوم انسانی",
-                average: "۱۷.۷۵",
-                issueDate: "۱۴۰۵/۰۶/۱۱",
-                school: "تهران منطقه ۱۲",
-                status: "فارغ التحصیل",
-                finalStatus: "در انتظار پرداخت شهریه و تایید"
+                name: "زهرا عباسیان", nationalId: "۶۶۴۰۱۴۵۵۴۵", diplomaNumber: "۳۵۰۶۵۹۸۷۴۲۵۴",
+                field: "ادبیات و علوم انسانی", average: "۱۷.۷۵", issueDate: "۱۴۰۵/۰۶/۱۱",
+                school: "تهران منطقه ۱۲", status: "فارغ التحصیل", finalStatus: "در انتظار پرداخت شهریه و تایید"
             },
-            // ===== رکوردهای جدید =====
             "4738291056": {
-                name: "سردار کریمی",
-                nationalId: "۲۷۵۶۰۸۵۸۱۲",
-                diplomaNumber: "۴۷۳۸۲۹۱۰۵۶",
-                field: "کشاورزی",
-                average: "۱۷.۷۵",
-                issueDate: "۱۳۹۱/۰۴/۲۱",
-                school: "تهران",
-                status: "فارغ التحصیل",
-                finalStatus: "در انتظار پرداخت شهریه و تایید"
+                name: "سردار کریمی", nationalId: "۲۷۵۶۰۸۵۸۱۲", diplomaNumber: "۴۷۳۸۲۹۱۰۵۶",
+                field: "کشاورزی", average: "۱۷.۷۵", issueDate: "۱۳۹۱/۰۴/۲۱",
+                school: "تهران", status: "فارغ التحصیل", finalStatus: "در انتظار پرداخت شهریه و تایید"
             },
             "5182947306": {
-                name: "بقیة الله خان آبادی",
-                nationalId: "۱۱۴۰۸۵۲۵۲۳",
-                diplomaNumber: "۵۱۸۲۹۴۷۳۰۶",
-                field: "علوم تجربی",
-                average: "۱۸.۲۵",
-                issueDate: "۱۳۹۱/۰۴/۲۱",
-                school: "تهران",
-                status: "فارغ التحصیل",
-                finalStatus: "در انتظار پرداخت شهریه و تایید"
+                name: "بقیة الله خان آبادی", nationalId: "۱۱۴۰۸۵۲۵۲۳", diplomaNumber: "۵۱۸۲۹۴۷۳۰۶",
+                field: "علوم تجربی", average: "۱۸.۲۵", issueDate: "۱۳۹۱/۰۴/۲۱",
+                school: "تهران", status: "فارغ التحصیل", finalStatus: "در انتظار پرداخت شهریه و تایید"
             },
             "6295018473": {
-                name: "رسول سلمانی",
-                nationalId: "۱۳۷۲۲۴۳۰۵۴",
-                diplomaNumber: "۶۲۹۵۰۱۸۴۷۳",
-                field: "ادبیات و علوم انسانی",
-                average: "۱۷.۲۵",
-                issueDate: "۱۳۹۱/۰۴/۲۱",
-                school: "تهران",
-                status: "فارغ التحصیل",
-                finalStatus: "در انتظار پرداخت شهریه و تایید"
+                name: "رسول سلمانی", nationalId: "۱۳۷۲۲۴۳۰۵۴", diplomaNumber: "۶۲۹۵۰۱۸۴۷۳",
+                field: "ادبیات و علوم انسانی", average: "۱۷.۲۵", issueDate: "۱۳۹۱/۰۴/۲۱",
+                school: "تهران", status: "فارغ التحصیل", finalStatus: "در انتظار پرداخت شهریه و تایید"
             },
             "7841025396": {
-                name: "سیدهیرش حسینی",
-                nationalId: "۳۸۲۱۳۱۱۱۱۸",
-                diplomaNumber: "۷۸۴۱۰۲۵۳۹۶",
-                field: "ریاضی و فیزیک",
-                average: "۱۸.۷۵",
-                issueDate: "۱۳۹۱/۰۴/۲۱",
-                school: "تهران",
-                status: "فارغ التحصیل",
-                finalStatus: "در انتظار پرداخت شهریه و تایید"
+                name: "سیدهیرش حسینی", nationalId: "۳۸۲۱۳۱۱۱۱۸", diplomaNumber: "۷۸۴۱۰۲۵۳۹۶",
+                field: "ریاضی و فیزیک", average: "۱۸.۷۵", issueDate: "۱۳۹۱/۰۴/۲۱",
+                school: "تهران", status: "فارغ التحصیل", finalStatus: "در انتظار پرداخت شهریه و تایید"
             },
             "8359174620": {
-                name: "سیامند رسولی",
-                nationalId: "۲۸۸۰۱۰۰۸۲۸",
-                diplomaNumber: "۸۳۵۹۱۷۴۶۲۰",
-                field: "مکانیک خودرو",
-                average: "۱۷.۷۵",
-                issueDate: "۱۳۹۱/۰۴/۲۱",
-                school: "تهران",
-                status: "فارغ التحصیل",
-                finalStatus: "در انتظار پرداخت شهریه و تایید"
+                name: "سیامند رسولی", nationalId: "۲۸۸۰۱۰۰۸۲۸", diplomaNumber: "۸۳۵۹۱۷۴۶۲۰",
+                field: "مکانیک خودرو", average: "۱۷.۷۵", issueDate: "۱۳۹۱/۰۴/۲۱",
+                school: "تهران", status: "فارغ التحصیل", finalStatus: "در انتظار پرداخت شهریه و تایید"
             },
             "9462738501": {
-                name: "سروه شکوه",
-                nationalId: "۳۸۱۰۰۸۳۴۹۶",
-                diplomaNumber: "۹۴۶۲۷۳۸۵۰۱",
-                field: "حسابداری",
-                average: "۱۷.۲۵",
-                issueDate: "۱۳۹۱/۰۴/۲۱",
-                school: "تهران",
-                status: "فارغ التحصیل",
-                finalStatus: "در انتظار پرداخت شهریه و تایید"
+                name: "سروه شکوه", nationalId: "۳۸۱۰۰۸۳۴۹۶", diplomaNumber: "۹۴۶۲۷۳۸۵۰۱",
+                field: "حسابداری", average: "۱۷.۲۵", issueDate: "۱۳۹۱/۰۴/۲۱",
+                school: "تهران", status: "فارغ التحصیل", finalStatus: "در انتظار پرداخت شهریه و تایید"
             },
             "1573849260": {
-                name: "حمید نیک پی",
-                nationalId: "۳۸۱۰۲۶۴۸۵۷",
-                diplomaNumber: "۱۵۷۳۸۴۹۲۶۰",
-                field: "ادبیات و علوم انسانی",
-                average: "۱۸.۷۵",
-                issueDate: "۱۳۹۱/۰۴/۲۱",
-                school: "تهران",
-                status: "فارغ التحصیل",
-                finalStatus: "در انتظار پرداخت شهریه و تایید"
+                name: "حمید نیک پی", nationalId: "۳۸۱۰۲۶۴۸۵۷", diplomaNumber: "۱۵۷۳۸۴۹۲۶۰",
+                field: "ادبیات و علوم انسانی", average: "۱۸.۷۵", issueDate: "۱۳۹۱/۰۴/۲۱",
+                school: "تهران", status: "فارغ التحصیل", finalStatus: "در انتظار پرداخت شهریه و تایید"
             },
             "2684950371": {
-                name: "آرمان نیک پی",
-                nationalId: "۳۸۲۱۳۳۲۶۳۸",
-                diplomaNumber: "۲۶۸۴۹۵۰۳۷۱",
-                field: "علوم تجربی",
-                average: "۱۸.۲۵",
-                issueDate: "۱۳۹۱/۰۴/۲۱",
-                school: "تهران",
-                status: "فارغ التحصیل",
-                finalStatus: "در انتظار پرداخت شهریه و تایید"
+                name: "آرمان نیک پی", nationalId: "۳۸۲۱۳۳۲۶۳۸", diplomaNumber: "۲۶۸۴۹۵۰۳۷۱",
+                field: "علوم تجربی", average: "۱۸.۲۵", issueDate: "۱۳۹۱/۰۴/۲۱",
+                school: "تهران", status: "فارغ التحصیل", finalStatus: "در انتظار پرداخت شهریه و تایید"
             },
             "3795061482": {
-                name: "سالار رسولی",
-                nationalId: "۲۸۸۰۰۲۴۴۰۴",
-                diplomaNumber: "۳۷۹۵۰۶۱۴۸۲",
-                field: "نقشه کشی",
-                average: "۱۷.۷۵",
-                issueDate: "۱۳۹۱/۰۴/۲۱",
-                school: "تهران",
-                status: "فارغ التحصیل",
-                finalStatus: "در انتظار پرداخت شهریه و تایید"
+                name: "سالار رسولی", nationalId: "۲۸۸۰۰۲۴۴۰۴", diplomaNumber: "۳۷۹۵۰۶۱۴۸۲",
+                field: "نقشه کشی", average: "۱۷.۷۵", issueDate: "۱۳۹۱/۰۴/۲۱",
+                school: "تهران", status: "فارغ التحصیل", finalStatus: "در انتظار پرداخت شهریه و تایید"
             },
             "4806172593": {
-                name: "نجم الدین اشعشی",
-                nationalId: "۳۸۱۰۰۵۴۵۵۰",
-                diplomaNumber: "۴۸۰۶۱۷۲۵۹۳",
-                field: "برق خودرو",
-                average: "۱۸.۷۵",
-                issueDate: "۱۳۹۱/۰۴/۲۱",
-                school: "تهران",
-                status: "فارغ التحصیل",
-                finalStatus: "در انتظار پرداخت شهریه و تایید"
+                name: "نجم الدین اشعشی", nationalId: "۳۸۱۰۰۵۴۵۵۰", diplomaNumber: "۴۸۰۶۱۷۲۵۹۳",
+                field: "برق خودرو", average: "۱۸.۷۵", issueDate: "۱۳۹۱/۰۴/۲۱",
+                school: "تهران", status: "فارغ التحصیل", finalStatus: "در انتظار پرداخت شهریه و تایید"
             },
             "5917283604": {
-                name: "گشین ایران پناه",
-                nationalId: "۳۸۱۰۶۷۳۶۰۹",
-                diplomaNumber: "۵۹۱۷۲۸۳۶۰۴",
-                field: "حسابداری",
-                average: "۱۸.۲۵",
-                issueDate: "۱۴۰۴/۰۴/۲۱",
-                school: "صدور تهران",
-                status: "فارغ التحصیل",
-                finalStatus: "در انتظار پرداخت شهریه و تایید"
+                name: "گشین ایران پناه", nationalId: "۳۸۱۰۶۷۳۶۰۹", diplomaNumber: "۵۹۱۷۲۸۳۶۰۴",
+                field: "حسابداری", average: "۱۸.۲۵", issueDate: "۱۴۰۴/۰۴/۲۱",
+                school: "صدور تهران", status: "فارغ التحصیل", finalStatus: "در انتظار پرداخت شهریه و تایید"
             }
         };
 
@@ -704,72 +516,51 @@
         const toggleListBtn = document.getElementById('toggleListBtn');
         const copiedToast = document.getElementById('copiedToast');
 
-        // ===== نمایش Toast =====
         function showToast(message) {
             copiedToast.textContent = message || '✅ کپی شد!';
             copiedToast.classList.add('show');
             setTimeout(() => copiedToast.classList.remove('show'), 1800);
         }
 
-        // ===== ساخت لیست شماره‌ها =====
+        // ✅ نمایش لیست با کلید واقعی دیتابیس (همان که باید جستجو شود)
         function buildList() {
             listTableBody.innerHTML = '';
             const entries = Object.entries(diplomaDatabase);
-            entries.forEach(([code, data], idx) => {
+            entries.forEach(([key, data], idx) => {
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td>${idx + 1}</td>
                     <td>${data.name}</td>
-                    <td class="code-cell" data-code="${code}" title="کلیک برای کپی">${code}</td>
+                    <td class="code-cell" data-code="${key}" title="کلیک برای کپی">${key}</td>
                     <td>${data.average}</td>
                 `;
                 listTableBody.appendChild(tr);
             });
-
-            // کلیک روی هر شماره برای کپی
             listTableBody.querySelectorAll('.code-cell').forEach(cell => {
                 cell.addEventListener('click', function() {
-                    const code = this.dataset.code;
-                    copyText(code, '✅ شماره ' + code + ' کپی شد');
+                    copyText(this.dataset.code, '✅ شماره ' + this.dataset.code + ' کپی شد');
                 });
             });
         }
 
-        // ===== تابع کپی =====
         function copyText(text, msg) {
             if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(text).then(() => {
-                    showToast(msg);
-                }).catch(() => fallbackCopy(text, msg));
-            } else {
-                fallbackCopy(text, msg);
-            }
+                navigator.clipboard.writeText(text).then(() => showToast(msg)).catch(() => fallbackCopy(text, msg));
+            } else { fallbackCopy(text, msg); }
         }
-
         function fallbackCopy(text, msg) {
             const ta = document.createElement('textarea');
-            ta.value = text;
-            ta.style.position = 'fixed';
-            ta.style.opacity = '0';
-            document.body.appendChild(ta);
-            ta.select();
-            try {
-                document.execCommand('copy');
-                showToast(msg);
-            } catch (e) {
-                alert('کپی ناموفق بود. لطفاً دستی کپی کنید:\n' + text);
-            }
+            ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+            document.body.appendChild(ta); ta.select();
+            try { document.execCommand('copy'); showToast(msg); }
+            catch (e) { alert('کپی ناموفق بود:\n' + text); }
             document.body.removeChild(ta);
         }
-
-        // ===== کپی همه شماره‌ها =====
         function copyAllCodes() {
             const codes = Object.keys(diplomaDatabase);
-            const text = codes.join('\n');
-            copyText(text, '✅ همه ' + codes.length + ' شماره کپی شد!');
+            copyText(codes.join('\n'), '✅ همه ' + codes.length + ' شماره کپی شد!');
         }
 
-        // ===== تاگل نمایش/مخفی کردن لیست =====
         toggleListBtn.addEventListener('click', function() {
             if (listSection.style.display === 'none' || !listSection.style.display) {
                 listSection.style.display = 'block';
@@ -787,7 +578,6 @@
             resultCard.style.display = 'none';
         }
         function hideLoading() { loadingState.style.display = 'none'; }
-
         function showError(message) {
             errorMessage.textContent = message;
             errorState.style.display = 'block';
@@ -807,9 +597,7 @@
             document.getElementById('resultFinalStatus').textContent = data.finalStatus;
             
             const statusElement = document.getElementById('resultFinalStatus');
-            const avgEn = toEnglishDigits(data.average);
-            const average = parseFloat(avgEn);
-            
+            const average = parseFloat(toEnglishDigits(data.average));
             if (average >= 19) statusElement.style.color = '#059669';
             else if (average >= 17) statusElement.style.color = '#d97706';
             else if (average >= 15) statusElement.style.color = '#dc2626';
@@ -820,7 +608,10 @@
             resultCard.scrollIntoView({ behavior: 'smooth' });
         }
 
-        function validateDiplomaNumber(number) {
-            if (!number) return 'لطفاً شماره دیپلم را وارد نمایید';
-            if (!/^\d{10,12}$/.test(number)) return 'شماره دیپلم باید بین ۱۰ تا ۱۲ رقم باشد';
-            return null
+        // ✅ جستجو: هم با کلید دیتابیس و هم با فیلد diplomaNumber داخل رکورد
+        function findRecord(number) {
+            // اول با کلید
+            if (diplomaDatabase[number]) return diplomaDatabase[number];
+            // بعد با فیلد diplomaNumber (تبدیل به انگلیسی)
+            for (const key in diplomaDatabase) {
+                const rec = diplomaDatabase[key
